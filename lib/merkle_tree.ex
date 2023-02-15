@@ -181,7 +181,7 @@ defmodule MerkleTree do
 
     parents =
       Enum.map(children_partitions, fn partition ->
-        concatenated_values = partition |> Enum.map(& &1.value) |> Enum.join()
+        concatenated_values = partition |> Enum.map(& &1.value) |> Enum.sort() |> Enum.join()
         concatenated_values = @node_salt <> concatenated_values
 
         %MerkleTree.Node{
